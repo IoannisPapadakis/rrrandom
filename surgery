@@ -26,6 +26,11 @@ treat_mean <- data %>%
   group_by(treatment) %>% 
   summarize(recover_mean = mean(recover), n = n())
 
+
+# plot 
+data %>% ggplot(aes(x = treatment, y = recover, color = as.factor(treatment))) + geom_jitter()
+
+# calc differenct
 diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
 diff
 

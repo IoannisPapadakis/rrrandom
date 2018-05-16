@@ -1,8 +1,11 @@
 
+################################################################################
 # post-surgery recovery times in days, for seven patients who were
 # randomly divided into a control group of three that received standard care, and a treatment
 # group of four that received a new kind of care
+# use randomize, repeat and reject - method to test if difference is significant
 # data source: https://escholarship.org/uc/item/6hb3k0nz
+################################################################################
 
 # load packages
 library(ggplot2)
@@ -25,6 +28,50 @@ treat_mean <- data %>%
 
 diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
 diff
+
+################################################################################
+# repeat random (solution 1)
+################################################################################
+
+result <- vector("numeric")
+p_cum <- vector("numeric")
+
+for (i in 1:1000) {
+   
+   treatment_random <- sample(treatment, length(treatment), replace = FALSE)
+   data_new <- cbind(data, treatment_random)
+
+   treat_mean <- data_new %>% 
+      group_by(treatment_random) %>% 
+      summarize(treat_mean = mean(recover), n = n())
+   
+   diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
+   
+   result <- c(result, diff)  
+   p_cum <- c(p_cum, sum(result >= 8.66) / length(result))
+   
+}
+
+# probability that the result is just random
+p_random <- sum(result >= 8.66) / length(result)
+
+# layout for plots 
+par(mfrow=c(2,1)) 
+
+# histogram
+hist(result, col = "grey", main = paste("result = 8.66, p (random) = ", p_random), xlab = "difference between treatment and control")
+abline(v = 8.66, col = "red")
+
+#evolution of result
+plot(p_cum, type="l", xlab = "step", ylab = "p cumulated", main = "approximation of p (random)")
+grid()
+abline(h = p_random, col = "red")
+
+ggplot(result, aes())
+
+################################################################################
+# all permutations of id (solution 2)
+################################################################################
 
 # all possilbe permutations of id
 nr_perm <- permutations(7, 7, nr)
@@ -56,4 +103,4 @@ for (i in 1:nrow(nr_perm)) {
 
 hist(result, col = "grey")
 
-sum(result >= 8.6) / length(result)
+sum(result >= 8.66) / length(result)

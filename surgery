@@ -1,0 +1,59 @@
+
+# post-surgery recovery times in days, for seven patients who were
+# randomly divided into a control group of three that received standard care, and a treatment
+# group of four that received a new kind of care
+# data source: https://escholarship.org/uc/item/6hb3k0nz
+
+# load packages
+library(ggplot2)
+library(dplyr)
+library(gtools)
+library(explore)
+
+# patients data 
+nr <- 1:7
+id <- 1:7
+treatment <- c(0, 0, 0, 1, 1, 1, 1)
+recover <- c(22, 33, 40, 19, 22, 25, 26)
+data_patient <- data.frame(nr, id, treatment, recover)
+str(data)
+
+# makes treatment a difference?
+treat_mean <- data %>% 
+  group_by(treatment) %>% 
+  summarize(recover_mean = mean(recover), n = n())
+
+diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
+diff
+
+# all possilbe permutations of id
+nr_perm <- permutations(7, 7, nr)
+
+# check if treatment makes a difference
+# for all possilbe permutations of id
+
+result <- vector("numeric")
+
+for (i in 1:nrow(nr_perm)) {
+  
+   nr_random <- id_perm[i, ]
+   tmp <- cbind(data[c("treatment")], nr_random) 
+   tmp
+
+   data_new <- data %>% 
+     select(nr, id, recover) %>% 
+     inner_join(tmp, by = c("nr" = "nr_random"))
+
+   treat_mean <- data_new %>% 
+     group_by(treatment) %>% 
+     summarize(treat_mean = mean(recover), n = n())
+
+   diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
+   
+   result <- c(result, diff)  
+
+}
+
+hist(result, col = "grey")
+
+sum(result >= 8.6) / length(result)

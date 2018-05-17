@@ -4,7 +4,7 @@ Test for significance by using "random, repeat, reject"
 ## surgery
 Example based on George W Cobbs paper "The Introductory Statistics Course: A Ptolemaic Curriculum?" https://escholarship.org/uc/item/6hb3k0nz (published 2007)
 
-## data
+### data
 Post-surgery recovery times in days, for seven patients who wererandomly divided into a control group of three that received standard care, and a treatmentgroup of four that received a new kind of care.
 
 |Treatment            | Times (days)    | Mean    | SD
@@ -13,4 +13,9 @@ Post-surgery recovery times in days, for seven patients who wererandomly divided
 |Treatment (new):     | 19, 22, 25, 26  | 23.00   | 9.1
 
 
-## is treatment really better?
+### is the new treatment really better?
+
+<img src="https://github.com/rolkra/rrrandom/blob/master/surgery_result.png" alt="example interactive exploration" width="400">
+
+
+<img src="https://github.com/rolkra/rrrandom/blob/master/surgery_aprox.png" alt="example interactive exploration" width="4

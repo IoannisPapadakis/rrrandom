@@ -1,7 +1,7 @@
 ################################################################################
 # post-surgery recovery times in days, for seven patients who were
-# randomly divided into a control group of three that received standard care, and a treatment
-# group of four that received a new kind of care
+# randomly divided into a control group of three that received standard care, 
+# and a treatment group of four that received a new kind of care
 # use randomize, repeat and reject - method to test if difference is significant
 # data source: https://escholarship.org/uc/item/6hb3k0nz
 ################################################################################

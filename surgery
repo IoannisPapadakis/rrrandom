@@ -10,7 +10,6 @@
 library(ggplot2)
 library(gridExtra)
 library(dplyr)
-library(gtools)
 
 # patients data 
 nr <- 1:7
@@ -26,7 +25,7 @@ treat_mean <- data %>%
    summarize(recover_mean = mean(recover), n = n())
 treat_mean
 
-diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
+ diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
 diff
 
 # plot 
@@ -47,7 +46,7 @@ ggplot(treat_mean, aes(treatment, recover_mean, fill = as.factor(treatment))) +
    geom_hline(yintercept = treat_mean[[2,2]], linetype = "dotted", alpha = 0.5)
 
 ################################################################################
-# repeat random (solution 1)
+# randomise and repeat 
 ################################################################################
 
 n <- 1000
@@ -55,13 +54,21 @@ n <- 1000
 result <- vector("numeric")
 p_cum <- vector("numeric")
 
-set.seed(100)
+set.seed(111)
 for (i in 1:n) {
    
-   treatment_random <- sample(treatment, length(treatment), replace = FALSE)
+   # select 3 random patients for the control group 
+   treatment_random <- c(1,1,1,1,1,1,1)
+   cg_random <- sample(nr, 3, replace = FALSE)
+   treatment_random[cg_random] <- 0
+   
+   # other strategies to generate random control group
    #treatment_random <- sample(c(0,1), length(treatment), replace = TRUE)
+   #treatment_random <- sample(treatment, length(treatment), replace = FALSE)
+   
    data_new <- cbind(data, treatment_random)
    
+   # calculate difference between treatment and control group
    treat_mean <- data_new %>% 
       group_by(treatment_random) %>% 
       summarize(treat_mean = mean(recover), n = n())
@@ -73,6 +80,10 @@ for (i in 1:n) {
    
 }
 
+################################################################################
+# reject? 
+################################################################################
+
 # probability that the result is just random
 p_random <- sum(result >= 8.66) / length(result)
 
@@ -83,7 +94,7 @@ p1 <- data_random %>%
    ggplot(aes(result)) + 
    geom_density(fill = "darkgrey", alpha = 0.5) +
    geom_vline(xintercept = 8.66, color = "red", alpha = 0.5) +
-   ggtitle(paste0("diff = 8.66, step = ", n, ", p(random) = ", p_random))
+   ggtitle(paste0("result = 8.66, step = ", n, ", p(random) = ", p_random))
 
 p2 <- data_random %>% 
    ggplot(aes(step, p_cum)) +
@@ -93,36 +104,3 @@ p2 <- data_random %>%
 
 grid.arrange(p1, p2, nrow = 2)
 
-################################################################################
-# all permutations of id (solution 2)
-################################################################################
-
-# all possilbe permutations of id
-nr_perm <- permutations(7, 7, nr)
-
-# check if treatment makes a difference
-# for all possilbe permutations of id
-
-result <- vector("numeric")
-
-for (i in 1:nrow(nr_perm)) {
-   
-   nr_random <- id_perm[i, ]
-   tmp <- cbind(data[c("treatment")], nr_random) 
-   tmp
-   
-   data_new <- data %>% 
-      select(nr, id, recover) %>% 
-      inner_join(tmp, by = c("nr" = "nr_random"))
-   
-   treat_mean <- data_new %>% 
-      group_by(treatment) %>% 
-      summarize(treat_mean = mean(recover), n = n())
-   
-   diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
-   
-   result <- c(result, diff)  
-   
-}
-
-sum(result >= 8.66) / length(result)

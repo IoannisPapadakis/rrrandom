@@ -37,13 +37,14 @@ data %>%
 
 # detailed plot
 ggplot(treat_mean, aes(treatment, recover_mean, fill = as.factor(treatment))) +
-   geom_col() +
+   geom_col(alpha = 0.5) +
    ylab("recover time") +
    labs(fill = "treatment") +
    ggtitle(paste("recover time by treatment: difference = ", round(diff,2))) +
-   geom_point(data = data, aes(x = treatment, y = recover), size = 3) +
-   geom_hline(yintercept = treat_mean[[1,2]], color = "darkgrey", alpha = 0.5)+
-   geom_hline(yintercept = treat_mean[[2,2]], color = "darkgrey", alpha = 0.5)
+   geom_point(data = data, aes(x = treatment, y = recover, fill = as.factor(treatment)), 
+              shape = 21, size = 5) +
+   geom_hline(yintercept = treat_mean[[1,2]], alpha = 0.5, linetype = "dotted") +
+   geom_hline(yintercept = treat_mean[[2,2]], linetype = "dotted", alpha = 0.5)
 
 ################################################################################
 # repeat random (solution 1)

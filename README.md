@@ -14,11 +14,11 @@ Post-surgery recovery times in days, for seven patients who were randomly divide
 
 ### is the new treatment really better?
 
-The result suggest so. The average recovery time of patients with new treatment is lower than the control group: 31.7 - 23.0 = 8.7. But is it significant? Or is it just a random pattern?
+The result suggests so. The average recovery time of patients with new treatment is lower than the control group: 31.7 - 23.0 = 8.7. But is it significant? Or is it just a random pattern?
 
 <img src="https://github.com/rolkra/rrrandom/blob/master/surgery_result.png" alt="example interactive exploration" width="600">
 
-We could run some classic statistical testing like a t-test. But an alternative approach is to see what happens if we randomize again (which patient gets which treatment) Is the difference of 8.7 likly?
+We could use some classic statistical tests like a t-test. But an alternative approach is to see what happens if we randomize again (which patient gets which treatment). Is the difference of 8.7 likely?
 
 ### randomize, repeat, reject
 
@@ -26,4 +26,4 @@ After repeating the randomization 1000 times we get the following result:
 
 <img src="https://github.com/rolkra/rrrandom/blob/master/surgery_aprox.png" alt="example interactive exploration" width="600">
 
-Getting a difference of 8.7 between treatment and control is not very likely. Only in 13% of the cases we get this result. So in other words, we can conclude: The new treatment reduces the recovery time by 8.7. The hypothesis, that there is no real difference (the differenece is just a random pattern) can be rejected, with the risk of 13% of beeing wrong.
+Getting a difference of at least 8.7 between treatment and control is not very likely. Only in 13% of the cases we get this result. So in other words, we can conclude: The new treatment reduces the recovery time by 8.7 days. The hypothesis, that there is no real difference (the differenece is just a random pattern) can be rejected, with the risk of 13% beeing wrong.

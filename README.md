@@ -1,7 +1,7 @@
 # rrrandom
 Test for significance by using "random, repeat, reject"
 
-## surgery
+## Surgery
 Example based on George W Cobbs paper "The Introductory Statistics Course: A Ptolemaic Curriculum?" https://escholarship.org/uc/item/6hb3k0nz (published 2007)
 
 Post-surgery recovery times in days, for seven patients who were randomly divided into a control group of three that received standard care, and a treatment group of four that received a new kind of care.
@@ -12,7 +12,7 @@ Post-surgery recovery times in days, for seven patients who were randomly divide
 |Treatment (new):     | 19, 22, 25, 26  | 23.0   | 9.1
 
 
-### is the new treatment really better?
+### Is the new treatment really better?
 
 The result suggests so. The average recovery time of patients with new treatment is lower than the control group: 31.7 - 23.0 = 8.7. But is it significant? Or is it just a random pattern?
 
@@ -20,7 +20,7 @@ The result suggests so. The average recovery time of patients with new treatment
 
 We could use some classic statistical tests like a t-test. But an alternative approach is to see what happens if we randomize again (which patient gets which treatment). Is the difference of 8.7 likely?
 
-### randomize, repeat, reject
+### Randomize, repeat, reject
 
 After repeating the randomization 1000 times we get the following result:
 

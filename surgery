@@ -25,7 +25,7 @@ treat_mean <- data %>%
    summarize(recover_mean = mean(recover), n = n())
 treat_mean
 
- diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
+diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
 diff
 
 # plot 
@@ -39,7 +39,7 @@ ggplot(treat_mean, aes(treatment, recover_mean, fill = as.factor(treatment))) +
    geom_col(alpha = 0.5) +
    ylab("recover time") +
    labs(fill = "treatment") +
-   ggtitle(paste("recover time by treatment: difference = ", round(diff,2))) +
+   ggtitle(paste("recover time by treatment: difference = ", round(diff,1),"days")) +
    geom_point(data = data, aes(x = treatment, y = recover, fill = as.factor(treatment)), 
               shape = 21, size = 5) +
    geom_hline(yintercept = treat_mean[[1,2]], alpha = 0.5, linetype = "dotted") +
@@ -78,7 +78,7 @@ for (i in 1:n) {
    result <- c(result, diff)  
    p_cum <- c(p_cum, sum(result >= 8.66) / length(result))
    
-}
+} # for
 
 ################################################################################
 # reject? 
@@ -94,13 +94,13 @@ p1 <- data_random %>%
    ggplot(aes(result)) + 
    geom_density(fill = "darkgrey", alpha = 0.5) +
    geom_vline(xintercept = 8.66, color = "red", alpha = 0.5) +
-   ggtitle(paste0("result = 8.66, step = ", n, ", p(random) = ", p_random))
+   ggtitle(paste0("random control group: step = ", n, ", p(result >= 8.7) = ", p_random))
 
 p2 <- data_random %>% 
    ggplot(aes(step, p_cum)) +
    geom_line() +
    geom_hline(yintercept = p_random, color = "red") +
-   ylab("aproximation p(random)")
+   ylab("aproximation p(result >= 8.7)")
 
 grid.arrange(p1, p2, nrow = 2)
 

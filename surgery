@@ -11,7 +11,6 @@ library(ggplot2)
 library(gridExtra)
 library(dplyr)
 library(gtools)
-library(explore)
 
 # patients data 
 nr <- 1:7
@@ -25,6 +24,7 @@ str(data)
 treat_mean <- data %>% 
    group_by(treatment) %>% 
    summarize(recover_mean = mean(recover), n = n())
+treat_mean
 
 # plot 
 data %>% 
@@ -45,6 +45,7 @@ n <- 1000
 result <- vector("numeric")
 p_cum <- vector("numeric")
 
+set.seed(100)
 for (i in 1:n) {
    
    treatment_random <- sample(treatment, length(treatment), replace = FALSE)
@@ -72,7 +73,7 @@ p1 <- data_random %>%
    ggplot(aes(result)) + 
    geom_density(fill = "darkgrey", alpha = 0.5) +
    geom_vline(xintercept = 8.66, color = "red", alpha = 0.5) +
-   ggtitle(paste0("result = 8.66, step = ", n, ", p(random) = ", p_random))
+   ggtitle(paste0("diff = 8.66, step = ", n, ", p(random) = ", p_random))
 
 p2 <- data_random %>% 
    ggplot(aes(step, p_cum)) +
@@ -113,7 +114,5 @@ for (i in 1:nrow(nr_perm)) {
    result <- c(result, diff)  
    
 }
-
-hist(result, col = "grey")
 
 sum(result >= 8.66) / length(result)

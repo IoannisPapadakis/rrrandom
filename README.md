@@ -4,7 +4,7 @@ Test for significance by using "random, repeat, reject"
 ## surgery
 Example based on George W Cobbs paper "The Introductory Statistics Course: A Ptolemaic Curriculum?" https://escholarship.org/uc/item/6hb3k0nz (published 2007)
 
-Post-surgery recovery times in days, for seven patients who wererandomly divided into a control group of three that received standard care, and a treatmentgroup of four that received a new kind of care.
+Post-surgery recovery times in days, for seven patients who were randomly divided into a control group of three that received standard care, and a treatment group of four that received a new kind of care.
 
 |Treatment            | Times (days)    | Mean    | SD
 |---------------------|-----------------|--------|------                    

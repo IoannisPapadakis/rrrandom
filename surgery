@@ -1,7 +1,7 @@
 ################################################################################
 # post-surgery recovery times in days, for seven patients who were
-# randomly divided into a control group of three that received standard care, 
-# and a treatment group of four that received a new kind of care
+# randomly divided into a control group of three that received standard care, and a treatment
+# group of four that received a new kind of care
 # use randomize, repeat and reject - method to test if difference is significant
 # data source: https://escholarship.org/uc/item/6hb3k0nz
 ################################################################################
@@ -26,15 +26,24 @@ treat_mean <- data %>%
    summarize(recover_mean = mean(recover), n = n())
 treat_mean
 
+diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
+diff
+
 # plot 
 data %>% 
    ggplot(aes(x = treatment, y = recover, fill = as.factor(treatment))) + 
    geom_dotplot(binaxis='y', stackdir='center') +
    ggtitle("recover time by treatment")
 
-# calc differenct
-diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
-diff
+# detailed plot
+ggplot(treat_mean, aes(treatment, recover_mean, fill = as.factor(treatment))) +
+   geom_col() +
+   ylab("recover time") +
+   labs(fill = "treatment") +
+   ggtitle(paste("recover time by treatment: difference = ", round(diff,2))) +
+   geom_point(data = data, aes(x = treatment, y = recover), size = 3) +
+   geom_hline(yintercept = treat_mean[[1,2]], color = "darkgrey", alpha = 0.5)+
+   geom_hline(yintercept = treat_mean[[2,2]], color = "darkgrey", alpha = 0.5)
 
 ################################################################################
 # repeat random (solution 1)

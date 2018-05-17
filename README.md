@@ -26,4 +26,4 @@ After repeating the randomization 1000 times we get the following result:
 
 <img src="https://github.com/rolkra/rrrandom/blob/master/surgery_aprox.png" alt="example interactive exploration" width="600">
 
-Getting a difference of at least 8.7 between treatment and control is not very likely. Only in 13% of the cases we get this result. So in other words, we can conclude: The new treatment reduces the recovery time by 8.7 days. The hypothesis, that there is no real difference (the differenece is just a random pattern) can be rejected, with the risk of 13% beeing wrong.
+Getting a difference of at least 8.7 between treatment and control is not very likely. Only in 11.5% of the cases we get this result. So in other words, we can conclude: The new treatment reduces the recovery time by 8.7 days. The hypothesis, that there is no real difference (the differenece is just a random pattern) can be rejected, with the risk of 11.5% beeing wrong.

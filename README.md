@@ -4,7 +4,6 @@ Test for significance by using "random, repeat, reject"
 ## surgery
 Example based on George W Cobbs paper "The Introductory Statistics Course: A Ptolemaic Curriculum?" https://escholarship.org/uc/item/6hb3k0nz (published 2007)
 
-### data
 Post-surgery recovery times in days, for seven patients who wererandomly divided into a control group of three that received standard care, and a treatmentgroup of four that received a new kind of care.
 
 |Treatment            | Times (days)    | Mean    | SD
@@ -15,7 +14,7 @@ Post-surgery recovery times in days, for seven patients who wererandomly divided
 
 ### is the new treatment really better?
 
-The result suggest so. The average recovery time of patients with new treatment is lower than the control group: 31.7 - 23.0 = 8.7. But is it significant? Or is it just a random? pattern?
+The result suggest so. The average recovery time of patients with new treatment is lower than the control group: 31.7 - 23.0 = 8.7. But is it significant? Or is it just a random pattern?
 
 <img src="https://github.com/rolkra/rrrandom/blob/master/surgery_result.png" alt="example interactive exploration" width="600">
 

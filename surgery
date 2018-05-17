@@ -18,7 +18,7 @@ nr <- 1:7
 id <- 1:7
 treatment <- c(0, 0, 0, 1, 1, 1, 1)
 recover <- c(22, 33, 40, 19, 22, 25, 26)
-data_patient <- data.frame(nr, id, treatment, recover)
+data <- data.frame(nr, id, treatment, recover)
 str(data)
 
 # makes treatment a difference?

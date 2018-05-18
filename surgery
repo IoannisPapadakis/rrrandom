@@ -53,6 +53,7 @@ n <- 1000
 
 result <- vector("numeric")
 p_cum <- vector("numeric")
+days_min <- diff
 
 set.seed(111)
 for (i in 1:n) {
@@ -76,7 +77,7 @@ for (i in 1:n) {
    diff <- treat_mean[[1,2]] - treat_mean[[2,2]]
    
    result <- c(result, diff)  
-   p_cum <- c(p_cum, sum(result >= 8.66) / length(result))
+   p_cum <- c(p_cum, sum(result >= days_min) / length(result))
    
 } # for
 

@@ -1,8 +1,8 @@
 ################################################################################
 # rolling a dice
 # is it a fair dice?
+# use randomize, repeat and reject - method to test it
 ################################################################################
-
 
 # load packages
 library(ggplot2)

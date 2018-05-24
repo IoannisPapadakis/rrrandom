@@ -16,7 +16,7 @@ Post-surgery recovery times in days, for seven patients who were randomly divide
 
 The result suggests so. The average recovery time of patients with new treatment is lower than the control group: 31.7 - 23.0 = 8.7. But is it significant? Or is it just a random pattern?
 
-<img src="https://github.com/rolkra/rrrandom/blob/master/surgery_result.png" alt="example interactive exploration" width="600">
+<img src="https://github.com/rolkra/rrrandom/blob/master/surgery_result.png" alt="surgery result" width="600">
 
 We could use some classic statistical tests like a t-test. But an alternative approach is to see what happens if we randomize again (which patient gets which treatment). Is the difference of 8.7 likely?
 
@@ -24,6 +24,15 @@ We could use some classic statistical tests like a t-test. But an alternative ap
 
 After repeating the randomization 1000 times we get the following result:
 
-<img src="https://github.com/rolkra/rrrandom/blob/master/surgery_aprox.png" alt="example interactive exploration" width="600">
+<img src="https://github.com/rolkra/rrrandom/blob/master/surgery_aprox.png" alt="randomize, repeat, reject" width="600">
 
 Getting a difference of at least 8.7 between treatment and control is not very likely. Only in 11.5% of the cases we get this result. So in other words, we can conclude: The new treatment reduces the recovery time by 8.7 days. The hypothesis, that there is no real difference (the differenece is just a random pattern) can be rejected, with the risk of 11.5% beeing wrong.
+
+
+## Is it a fair dice?
+
+Lets say we roll the dice 20 times and we get 6 times a six. The expected value is 20/6 = 3.33, so 3 times. How likely is this result. We test it using randomize, repeat, reject:
+
+<img src="https://github.com/rolkra/rrrandom/blob/master/dice_result.png" alt="randomize, repeat, reject" width="600">
+
+So there is a 9.4% Chance that getting 6 times a six is just random.

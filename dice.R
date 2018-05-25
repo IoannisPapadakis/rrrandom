@@ -22,7 +22,8 @@ six
 ################################################################################
 
 rolling <- 20
-steps <- 1000
+n <- 1000
+check <- 6
 
 result <- vector("numeric")
 p_cum <- vector("numeric")

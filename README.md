@@ -35,4 +35,13 @@ Lets say we roll the dice 20 times and we get 6 times a six. The expected value 
 
 <img src="https://github.com/rolkra/rrrandom/blob/master/dice_result.png" alt="randomize, repeat, reject" width="600">
 
-So there is a 9.4% chance to get 6 times a six just by random. This is quite low, so probably check the dice for manipulation before gambling for money!  
+So there is a 9.4% chance to get at least 6 times a six just by random. This is quite low, so probably check the dice for manipulation before gambling for money!  
+
+
+## Is it a fair coin?
+
+Lets say we flip a coin 20 times and we get 11 times a head. The expected value is 20/2 = 10, so 11 is a little bit higher than 10. How likely is this result. We test it using randomize, repeat, reject. After repeating the randomization 1000 times we get the following result:
+
+<img src="https://github.com/rolkra/rrrandom/blob/master/coin_result.png" alt="randomize, repeat, reject" width="600">
+
+So there is a 40.3% chance to get at least 11 times a head just by random. This is quite high, so we can assume that the coin is fair!

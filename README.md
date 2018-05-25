@@ -6,7 +6,7 @@ Example based on George W Cobbs paper "The Introductory Statistics Course: A Pto
 
 Post-surgery recovery times in days, for seven patients who were randomly divided into a control group of three that received standard care, and a treatment group of four that received a new kind of care.
 
-|Treatment            | Times (days)    | Mean    | SD
+|Treatment            | Times (days)    | Mean   | SD
 |---------------------|-----------------|--------|------                    
 |Control (standard):  | 22, 33, 40      | 31.7   | 3.0
 |Treatment (new):     | 19, 22, 25, 26  | 23.0   | 9.1
@@ -31,8 +31,8 @@ Getting a difference of at least 8.7 between treatment and control is not very l
 
 ## Is it a fair dice?
 
-Lets say we roll the dice 20 times and we get 6 times a six. The expected value is 20/6 = 3.33, so 3 times. How likely is this result. We test it using randomize, repeat, reject:
+Lets say we roll the dice 20 times and we get 6 times a six. The expected value is 20/6 = 3.33, so 3 times a six. Getting 6 times a six is twice as high as expected (6 vs. 3). How likely is this result. We test it using randomize, repeat, reject. After repeating the randomization 1000 times we get the following result:
 
 <img src="https://github.com/rolkra/rrrandom/blob/master/dice_result.png" alt="randomize, repeat, reject" width="600">
 
-So there is a 9.4% Chance that getting 6 times a six is just random.
+So there is a 9.4% chance to get 6 times a six just by random. This is quite low, so probably check the dice for manipulation before gambling for money!  
